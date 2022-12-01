@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmeSearch</title>
+</head>
+<body>
+    <img id="posterDiv"></img>
+    <div id="providersDiv">
+        <div id="streamingDiv">Streaming:</div>
+        <div id="rentDiv">Alugar:</div>
+        <div id="buyDiv">Comprar:</div>
+    </div>
+
+    <script>
+
+        //Elementos HTML
+        const posterDiv = document.getElementById("posterDiv")
+        const providersDiv = document.getElementById("providersDiv");
+        const streamingDiv = document.getElementById("streamingDiv");
+        const rentDiv = document.getElementById("rentDiv");
+        const buyDiv = document.getElementById("buyDiv");
+
+        //Parâmetros URL (informações contidas na URL)
+        const QuerySring = window.location.search;
+        const urlParams = new URLSearchParams(QuerySring);
+        const idParam = urlParams.get('id');
+        const mediaTypeParam = urlParams.get('media_type');
+
+
+        fetch(`https://api.themoviedb.org/3/${mediaTypeParam}/${idParam}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&language=pt-BR&append_to_response=watch/providers`)
+                    .then(response => response.json())
+                    .then(data => {
+                        
+                        console.log(data);
+
+                        posterDiv.src = `https://image.tmdb.org/t/p/w342${data.poster_path}`;
+
+                        const providersBR = data["watch/providers"].results.BR;
+
+                        for (i in providersBR.flatrate){
+                            const provider = providersBR.flatrate[i];
+                            
+                            streamingDiv.innerHTML += `<p><img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">${provider.provider_name}</p>`
+                        }
+                        for (i in providersBR.rent){
+                            const provider = providersBR.rent[i];
+                            
+                            rentDiv.innerHTML += `<p><img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">${provider.provider_name}</p>`
+                        }
+                        for (i in providersBR.buy){
+                            const provider = providersBR.buy[i];
+                            
+                            buyDiv.innerHTML += `<p><img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">${provider.provider_name}</p>`
+                        }
+
+                    });
+    </script>
+</body>
+</html>
