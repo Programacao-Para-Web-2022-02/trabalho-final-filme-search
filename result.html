@@ -7,11 +7,18 @@
     <title>FilmeSearch</title>
 </head>
 <body>
-    <img id="posterDiv"></img>
-    <div id="providersDiv">
-        <div id="streamingDiv">Streaming:</div>
-        <div id="rentDiv">Alugar:</div>
-        <div id="buyDiv">Comprar:</div>
+    <img id="posterDiv" style="float: left;"></img>   
+    <div id="providersDiv" style="position: relative; left: 20px;">
+        <h1 id="movieTitle"></h1>
+        <div id="streamingDiv">
+            <h2>Streaming:</h2>
+        </div>
+        <div id="rentDiv">
+            <h2>Alugar:</h2>
+        </div>
+        <div id="buyDiv">
+            <h2>Comprar:</h2>
+        </div>
     </div>
 
     <script>
@@ -22,6 +29,7 @@
         const streamingDiv = document.getElementById("streamingDiv");
         const rentDiv = document.getElementById("rentDiv");
         const buyDiv = document.getElementById("buyDiv");
+        const movieTitle = document.getElementById("movieTitle");
 
         //Parâmetros URL (informações contidas na URL)
         const QuerySring = window.location.search;
@@ -37,23 +45,24 @@
                         console.log(data);
 
                         posterDiv.src = `https://image.tmdb.org/t/p/w342${data.poster_path}`;
+                        movieTitle.innerHTML = data.title;
 
                         const providersBR = data["watch/providers"].results.BR;
 
                         for (i in providersBR.flatrate){
                             const provider = providersBR.flatrate[i];
                             
-                            streamingDiv.innerHTML += `<p><img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">${provider.provider_name}</p>`
+                            streamingDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
                         }
                         for (i in providersBR.rent){
                             const provider = providersBR.rent[i];
                             
-                            rentDiv.innerHTML += `<p><img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">${provider.provider_name}</p>`
+                            rentDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
                         }
                         for (i in providersBR.buy){
                             const provider = providersBR.buy[i];
                             
-                            buyDiv.innerHTML += `<p><img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">${provider.provider_name}</p>`
+                            buyDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
                         }
 
                     });
