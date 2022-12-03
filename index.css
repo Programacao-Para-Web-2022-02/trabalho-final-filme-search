@@ -1,0 +1,47 @@
+body {
+   font-size: 20px; 
+   background-color: black;  
+}
+
+#headerDiv{
+   height: 100px;
+   padding: 10px;
+   background-color: rgb(50, 50, 50); 
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 80px;
+   color: whitesmoke;   
+}
+
+#searchDiv{
+   margin-top: 20px;
+   height: 40px;
+   padding: 30px;   
+   background-color: whitesmoke; 
+   border-radius: 25px;   
+}
+
+
+#resultsDiv{
+   margin-top: 20px;   
+   padding: 30px;            
+}
+
+
+
+#footerDiv{
+   height: 40px;
+   padding: 30px;   
+   background-color: whitesmoke; 
+}
+
+input{
+   border-radius: 10px;
+   width: 50%;
+   font-size: 30px;
+}
+
+button{
+   height: 40px;
+   font-size: 30px;
+   border-radius: 10px;
+}
