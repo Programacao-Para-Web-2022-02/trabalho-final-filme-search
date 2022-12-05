@@ -30,23 +30,36 @@ fetch(`https://api.themoviedb.org/3/${mediaTypeParam}/${idParam}?api_key=15e3832
                 //Descrição
                 document.getElementById("overviewDiv").innerHTML = media["overview"];
                 
-                    const providersBR = media["watch/providers"].results.BR;
+                const providersBR = media["watch/providers"].results.BR;
 
-                for (i in providersBR.flatrate){
-                    const provider = providersBR.flatrate[i];
-                    
-                    streamingDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
-                }
-                for (i in providersBR.rent){
-                    const provider = providersBR.rent[i];
-                    
-                    rentDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
-                }
-                for (i in providersBR.buy){
-                    const provider = providersBR.buy[i];
-                    
-                    buyDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
+                if ("flatrate" in providersBR){
+                    for (i in providersBR.flatrate){
+                        const provider = providersBR.flatrate[i];
+                        
+                        streamingDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
+                    }
+                } else {
+                    streamingDiv.innerHTML += "<p>(Sem dados)</p>";
                 }
 
+                if ("rent" in providersBR){
+                    for (i in providersBR.rent){
+                        const provider = providersBR.rent[i];
+                        
+                        rentDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
+                    }
+                } else {
+                    rentDiv.innerHTML += "<p>(Sem dados)</p>";
+                }
+
+                if ("buy" in providersBR){
+                    for (i in providersBR.buy){
+                        const provider = providersBR.buy[i];
+                        
+                        buyDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
+                    }
+                } else {
+                    buyDiv.innerHTML += "<p>(Sem dados)</p>";
+                }
             });
 
