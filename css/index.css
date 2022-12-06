@@ -1,24 +1,25 @@
 body {
-   font-size: 20px; 
-   background-color: black;  
+   background-color:rgb(20, 20, 20);
+   font-size: 20px;
 }
 
 #headerDiv{
-   height: 100px;
    padding: 10px;
-   background-color: rgb(50, 50, 50); 
+   /* background-color: rgb(50, 50, 50);  */
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    font-size: 80px;
-   color: whitesmoke;   
+   color: whitesmoke;
+   display: flex;
+   align-items: center;
 }
 
-#searchDiv{
+/* #searchDiv{
    margin-top: 20px;
    height: 40px;
    padding: 30px;   
    background-color: whitesmoke; 
    border-radius: 25px;   
-}
+} */
 
 
 #resultsDiv{
@@ -26,22 +27,46 @@ body {
    padding: 30px;            
 }
 
-
-
 #footerDiv{
    height: 40px;
    padding: 30px;   
    background-color: whitesmoke; 
 }
 
-input{
-   border-radius: 10px;
-   width: 50%;
-   font-size: 30px;
+#searchBar{
+   color: whitesmoke;
+   background-color: black;
+   border: 1px solid whitesmoke;
+   border-radius: 20px;
+   width: 500px;
+   font-size: 22px;
+   padding: 5px 20px;
+   margin-right: 1px;
 }
 
-button{
+#searchButton{
+   cursor: pointer;
    height: 40px;
-   font-size: 30px;
-   border-radius: 10px;
+   width: 40px;
+   border: 1px solid whitesmoke;
+   border-radius: 20px;
+   background-color: black;
+   margin: 10px;
+}
+
+#searchButton:hover{
+   background-color: darkgrey;
+}
+
+#searchButton:active{
+   border-color: darkgray;
+   background-color: darkgray;
+}
+
+#searchButton:focus{
+   border-width: 3px;
+}
+
+#searchIcon{
+   fill: whitesmoke;
 }

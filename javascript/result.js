@@ -19,7 +19,9 @@ fetch(`https://api.themoviedb.org/3/${mediaTypeParam}/${idParam}?api_key=15e3832
                 
                 console.log(media);
 
-                posterDiv.src = `https://image.tmdb.org/t/p/w342${media.poster_path}`;
+                if (media.poster_path != null && media.poster_path != ""){
+                    posterDiv.src = `https://image.tmdb.org/t/p/w342${media.poster_path}`;
+                }
                 
                 //título da média
                 if (mediaTypeParam=="tv")
@@ -32,34 +34,40 @@ fetch(`https://api.themoviedb.org/3/${mediaTypeParam}/${idParam}?api_key=15e3832
                 
                 const providersBR = media["watch/providers"].results.BR;
 
-                if ("flatrate" in providersBR){
-                    for (i in providersBR.flatrate){
-                        const provider = providersBR.flatrate[i];
-                        
-                        streamingDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
-                    }
-                } else {
+                if (providersBR === undefined){
                     streamingDiv.innerHTML += "<p>(Sem dados)</p>";
-                }
-
-                if ("rent" in providersBR){
-                    for (i in providersBR.rent){
-                        const provider = providersBR.rent[i];
-                        
-                        rentDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
-                    }
-                } else {
                     rentDiv.innerHTML += "<p>(Sem dados)</p>";
-                }
-
-                if ("buy" in providersBR){
-                    for (i in providersBR.buy){
-                        const provider = providersBR.buy[i];
-                        
-                        buyDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
-                    }
-                } else {
                     buyDiv.innerHTML += "<p>(Sem dados)</p>";
+                } else {
+                    if ("flatrate" in providersBR){
+                        for (i in providersBR.flatrate){
+                            const provider = providersBR.flatrate[i];
+                            
+                            streamingDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
+                        }
+                    } else {
+                        streamingDiv.innerHTML += "<p>(Sem dados)</p>";
+                    }
+    
+                    if ("rent" in providersBR){
+                        for (i in providersBR.rent){
+                            const provider = providersBR.rent[i];
+                            
+                            rentDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
+                        }
+                    } else {
+                        rentDiv.innerHTML += "<p>(Sem dados)</p>";
+                    }
+    
+                    if ("buy" in providersBR){
+                        for (i in providersBR.buy){
+                            const provider = providersBR.buy[i];
+                            
+                            buyDiv.innerHTML += `<img class="provider" src="https://image.tmdb.org/t/p/w45/${provider.logo_path}" title="${provider.provider_name}">`
+                        }
+                    } else {
+                        buyDiv.innerHTML += "<p>(Sem dados)</p>";
+                    }
                 }
             });
 

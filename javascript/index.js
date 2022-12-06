@@ -43,12 +43,9 @@ function search(val) {
                     if (item.poster_path != "" && item.poster_path != null)
                         scr = `https://image.tmdb.org/t/p/w154${item.poster_path}`;
                     else
-                        scr ="";
+                        scr = "filme.jpg";
                     
-                    resultsDiv.innerHTML += 
-                        `
-                            <img src="${scr}" alt="${item.title}" onclick=location.href="result.html?media_type=${item.media_type}&id=${item.id}">
-                        `;
+                    resultsDiv.innerHTML += `<img src="${scr}" width="154" height="218" onclick=location.href="result.html?media_type=${item.media_type}&id=${item.id}">`;
                 }                   
             }
         }); 
