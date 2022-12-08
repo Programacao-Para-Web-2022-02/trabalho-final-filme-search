@@ -1,5 +1,3 @@
 # trabalho-final-filme-search
-trabalho-final-filme-search created by GitHub Classroom
-![Trabalho filme-search](https://user-images.githubusercontent.com/110853980/194437824-eebd259e-109a-4ec2-8916-f62260b43e60.png)
-![Trabalho filme-search](https://user-images.githubusercontent.com/110853980/194437827-4b8c576e-f121-4bab-9b30-b6261351913e.png)
-[Trabalho Filme NOMES.docx](https://github.com/Programacao-Para-Web-2022-02/trabalho-final-filme-search/files/9729265/Trabalho.Filme.NOMES.docx)
+![screenshot-1](https://user-images.githubusercontent.com/93000317/206451873-05206f4e-e0ad-4006-b418-7c748e244eeb.png)
+![screenshot-2](https://user-images.githubusercontent.com/93000317/206451877-557dc73e-9bd5-4e02-a829-32eea3506435.png)
