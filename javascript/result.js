@@ -23,13 +23,11 @@ fetch(`https://api.themoviedb.org/3/${mediaTypeParam}/${idParam}?api_key=15e3832
                     posterDiv.src = `https://image.tmdb.org/t/p/w342${media.poster_path}`;
                 }
                 
-                //título da média
                 if (mediaTypeParam=="tv")
                     movieTitle.innerHTML = media.name;
                 else
                     movieTitle.innerHTML = media.title;
 
-                //Descrição
                 document.getElementById("overviewDiv").innerHTML = media["overview"];
                 
                 const providersBR = media["watch/providers"].results.BR;
