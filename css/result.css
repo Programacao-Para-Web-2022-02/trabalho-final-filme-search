@@ -1,0 +1,33 @@
+html{
+    background-color:rgb(20, 20, 20);
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 3px groove whitesmoke;
+    margin: 0 auto;
+    margin-top: 100px;
+    /* height: 60%; */
+    width: 80%;
+}
+
+#posterDiv{
+    float: left;
+    margin: 20px;
+}
+
+.provider{
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+#providersDiv{
+    width: 50%;
+    /* float: right; */
+    /* border: 3px groove whitesmoke; */
+    margin: 50px;
+}
+
+#providersDiv p{
+    color: darkgray;
+    font-size: x-small;
+    margin-left: 50px;
+}

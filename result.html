@@ -4,68 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/result.css">
     <title>FilmeSearch</title>
 </head>
 <body>
-    <img id="posterDiv" style="float: left;"></img>   
-    <div id="providersDiv" style="position: relative; left: 20px;">
+    <img id="posterDiv" src='filme.jpg' onerror="this.onerror=null;this.src='filme.jpg';"></img>
+    <div id="info">
         <h1 id="movieTitle"></h1>
-        <div id="streamingDiv">
-            <h2>Streaming:</h2>
-        </div>
-        <div id="rentDiv">
-            <h2>Alugar:</h2>
-        </div>
-        <div id="buyDiv">
-            <h2>Comprar:</h2>
+        <div id="overviewDiv"></div>
+        <div id="providersDiv">        
+            <div id="streamingDiv">
+                <h3>Serviços de Assinatura:</h3>
+            </div>
+            <div id="rentDiv">
+                <h3>Alugar:</h3>
+            </div>
+            <div id="buyDiv">
+                <h3>Comprar:</h3>
+            </div>
         </div>
     </div>
 
-    <script>
 
-        //Elementos HTML
-        const posterDiv = document.getElementById("posterDiv")
-        const providersDiv = document.getElementById("providersDiv");
-        const streamingDiv = document.getElementById("streamingDiv");
-        const rentDiv = document.getElementById("rentDiv");
-        const buyDiv = document.getElementById("buyDiv");
-        const movieTitle = document.getElementById("movieTitle");
-
-        //Parâmetros URL (informações contidas na URL)
-        const QuerySring = window.location.search;
-        const urlParams = new URLSearchParams(QuerySring);
-        const idParam = urlParams.get('id');
-        const mediaTypeParam = urlParams.get('media_type');
-
-
-        fetch(`https://api.themoviedb.org/3/${mediaTypeParam}/${idParam}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&language=pt-BR&append_to_response=watch/providers`)
-                    .then(response => response.json())
-                    .then(data => {
-                        
-                        console.log(data);
-
-                        posterDiv.src = `https://image.tmdb.org/t/p/w342${data.poster_path}`;
-                        movieTitle.innerHTML = data.title;
-
-                        const providersBR = data["watch/providers"].results.BR;
-
-                        for (i in providersBR.flatrate){
-                            const provider = providersBR.flatrate[i];
-                            
-                            streamingDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
-                        }
-                        for (i in providersBR.rent){
-                            const provider = providersBR.rent[i];
-                            
-                            rentDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
-                        }
-                        for (i in providersBR.buy){
-                            const provider = providersBR.buy[i];
-                            
-                            buyDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w45/${provider.logo_path}">`
-                        }
-
-                    });
-    </script>
+    <script src="javascript/result.js"></script>
 </body>
 </html>
+
